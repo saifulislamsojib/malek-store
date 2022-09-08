@@ -2,7 +2,8 @@ const loadCategories = () => {
   showSpinner(true);
   fetch("https://fakestoreapi.com/products/categories")
     .then((res) => res.json())
-    .then((categories) => displayCategories(categories));
+    .then((categories) => displayCategories(categories))
+    .catch((err) => console.log(err));
 };
 
 const displayCategories = (categories) => {
@@ -32,7 +33,8 @@ const loadProducts = (category) => {
   }
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displayProducts(data, category));
+    .then((data) => displayProducts(data, category))
+    .catch((err) => console.log(err));
 };
 
 const displayProducts = (products, category = "Products") => {
@@ -77,7 +79,8 @@ const loadProduct = (id) => {
   productDetails.innerHTML = "<h5>Loading...</h5>";
   fetch(`https://fakestoreapi.com/products/${id}`)
     .then((res) => res.json())
-    .then((data) => showProductDetails(data));
+    .then((data) => showProductDetails(data))
+    .catch((err) => console.log(err));
 };
 
 const showProductDetails = (product) => {
